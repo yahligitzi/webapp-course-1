@@ -9,3 +9,9 @@ GET http://localhost:3000/posts
 ###
 
 POST http://localhost:3000/posts
+Content-Type: application.json
+{
+    "owner":"Inbal",
+    "title":"this is the title of the post",
+    "content": "content of the post"
+}
