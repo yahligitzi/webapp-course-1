@@ -36,3 +36,32 @@ Content-Type: application/json
     "title":"updated title",
     "content": "updated content"
 }
+
+###
+
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "owner":"Yahli",
+    "content": "content of the comment",
+    "postId": "673db41f6daeb871307538d4"
+}
+
+###
+
+GET http://localhost:3000/comments/post/673db41f6daeb871307538d4
+
+### 
+
+DELETE http://localhost:3000/comments/673db41f6daeb871307538d4
+
+###
+
+PUT http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "_id":"673db41f6daeb871307538d4",
+    "content": "updated content"
+}
