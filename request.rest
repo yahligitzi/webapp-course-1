@@ -9,3 +9,30 @@ GET http://localhost:3000/posts
 ###
 
 POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "owner":"Inbal2",
+    "title":"this is the title of the post",
+    "content": "content of the post"
+}
+
+###
+
+GET http://localhost:3000/posts/post/673db41f6daeb871307538d4
+
+### 
+
+GET http://localhost:3000/posts/post?sender=Inbal
+
+###
+
+PUT http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "_id":"673db41f6daeb871307538d4",
+    "owner":"Inbal",
+    "title":"updated title",
+    "content": "updated content"
+}

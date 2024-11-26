@@ -10,6 +10,10 @@ db.once("open", () => {
   console.log("Connected to database");
 });
 
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true, limit: "1mb" }));
+app.use(bodyParser.json());
+
 const port = process.env.PORT;
 
 app.get("/", (req, res) => {
