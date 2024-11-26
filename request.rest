@@ -50,6 +50,11 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost:3000/comments/6745e775b4250208fbf499b5
+
+
+###
+
 GET http://localhost:3000/comments/post/6745e761b4250208fbf499b1
 
 ### 

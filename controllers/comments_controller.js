@@ -1,7 +1,6 @@
 const Comments = require("../models/comments_model");
 const Posts = require("../models/posts_model");
 
-// READ
 const getById = async (req, res) => {
   try {
     const comment = await Comments.findById(req.params.id);
@@ -11,7 +10,6 @@ const getById = async (req, res) => {
   }
 };
 
-// CREATE
 const create = async (req, res) => {
   try {
     const post = await Posts.findById(req.body.postId);
@@ -26,7 +24,6 @@ const create = async (req, res) => {
   }
 };
 
-// UPDATE
 const update = async (req, res) => {
   try {
     const comment = await Comments.findByIdAndUpdate(
@@ -39,7 +36,6 @@ const update = async (req, res) => {
   }
 };
 
-// DELETE
 const deleteComment = async (req, res) => {
   try {
     const comment = await Comments.deleteOne({ _id: req.params.id });
@@ -49,7 +45,6 @@ const deleteComment = async (req, res) => {
   }
 };
 
-// GET BY POST
 const getByPostId = async (req, res) => {
   try {
     const comments = await Comments.find({ postId: req.params.postId });
