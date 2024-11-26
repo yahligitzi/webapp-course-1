@@ -10,6 +10,6 @@ router.put("/", Comment.update);
 
 router.delete("/:id", Comment.deleteComment);
 
-router.get("/post/:id", Comment.getByPostId);
+router.get("/post/:postId", Comment.getByPostId);
 
 module.exports = router;
