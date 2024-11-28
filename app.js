@@ -23,6 +23,9 @@ app.get("/", (req, res) => {
 const PostsRoutes = require("./routes/posts_routes");
 app.use("/posts", PostsRoutes);
 
+const CommentsRoutes = require("./routes/comments_routes");
+app.use("/comments", CommentsRoutes);
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

@@ -12,14 +12,14 @@ POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
-    "owner":"Inbal2",
+    "owner":"Yahli",
     "title":"this is the title of the post",
     "content": "content of the post"
 }
 
 ###
 
-GET http://localhost:3000/posts/post/673db41f6daeb871307538d4
+GET http://localhost:3000/posts/post/6745e1e408aba85a5302eee1
 
 ### 
 
@@ -31,8 +31,42 @@ PUT http://localhost:3000/posts
 Content-Type: application/json
 
 {
-    "_id":"673db41f6daeb871307538d4",
+    "_id":"6745e1e408aba85a5302eee1",
     "owner":"Inbal",
     "title":"updated title",
+    "content": "updated content"
+}
+
+###
+
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "owner":"Yahli",
+    "content": "content of the comment",
+    "postId": "6745e761b4250208fbf499b1"
+}
+
+###
+
+GET http://localhost:3000/comments/6745e775b4250208fbf499b5
+
+
+###
+
+GET http://localhost:3000/comments/post/6745e761b4250208fbf499b1
+
+### 
+
+DELETE http://localhost:3000/comments/6745e5ac93ace2b2cce449c9
+
+###
+
+PUT http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "_id":"6745e775b4250208fbf499b5",
     "content": "updated content"
 }
