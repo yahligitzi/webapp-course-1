@@ -1,5 +1,5 @@
-const Comments = require("../models/comments_model");
 const Posts = require("../models/posts_model");
+const Comments = require("../models/comments_model");
 
 const getById = async (req, res) => {
   try {
