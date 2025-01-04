@@ -37,7 +37,7 @@ Content-Type: application/json
     "content": "updated content"
 }
 
-###
+############## Comments #################
 
 POST http://localhost:3000/comments
 Content-Type: application/json
@@ -69,4 +69,37 @@ Content-Type: application/json
 {
     "_id":"6745e775b4250208fbf499b5",
     "content": "updated content"
+}
+
+############## Users #################
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "username":"inbalbarak",
+    "email": "email"
+}
+
+###
+
+GET http://localhost:3000/users/6770313c4f4286c25a9cd009
+
+
+###
+
+GET http://localhost:3000/users/
+
+### 
+
+DELETE http://localhost:3000/users/6770308debb71e5ebc511ab3
+
+###
+
+PUT http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "_id":"6770308debb71e5ebc511ab3",
+    "email": "updated email"
 }
