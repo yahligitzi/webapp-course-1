@@ -4,6 +4,7 @@ import {
   getByPostId,
   commentsController,
 } from "../controllers/comments_controller";
+import { authMiddleware } from "../controllers/auth_controller";
 
 /**
  * @swagger
@@ -136,11 +137,23 @@ import {
  */
 router.get("/:id", commentsController.getById.bind(commentsController));
 
-router.post("/", commentsController.post.bind(commentsController));
+router.post(
+  "/",
+  authMiddleware,
+  commentsController.post.bind(commentsController)
+);
 
-router.put("/", commentsController.update.bind(commentsController));
+router.put(
+  "/",
+  authMiddleware,
+  commentsController.update.bind(commentsController)
+);
 
-router.delete("/:id", commentsController.delete.bind(commentsController));
+router.delete(
+  "/:id",
+  authMiddleware,
+  commentsController.delete.bind(commentsController)
+);
 
 router.get("/post/:postId", getByPostId);
 

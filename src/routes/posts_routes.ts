@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import { postController, getBySender } from "../controllers/posts_controller";
+import { authMiddleware } from "../controllers/auth_controller";
 
 /**
  * @swagger
@@ -117,12 +118,12 @@ import { postController, getBySender } from "../controllers/posts_controller";
 
 router.get("/", postController.getAll.bind(postController));
 
-router.post("/", postController.post.bind(postController));
+router.post("/", authMiddleware, postController.post.bind(postController));
 
 router.get("/post/:id", postController.getById.bind(postController));
 
 router.get("/post", getBySender.bind(postController));
 
-router.put("/", postController.update.bind(postController));
+router.put("/", authMiddleware, postController.update.bind(postController));
 
 export default router;
