@@ -20,7 +20,7 @@ class BaseController<T> {
 
   getAll = async (req: Request, res: Response) => {
     try {
-      res.status(201).json(await this.model.find());
+      res.status(200).json(await this.model.find());
     } catch (err) {
       res.status(500).json({ message: err });
     }
@@ -28,7 +28,7 @@ class BaseController<T> {
 
   getById = async (req: Request, res: Response) => {
     try {
-      res.status(201).json(await this.model.findById(req.params.id));
+      res.status(200).json(await this.model.findById(req.params.id));
     } catch (err) {
       res.status(500).json({ message: err });
     }
