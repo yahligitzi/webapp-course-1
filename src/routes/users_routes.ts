@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import usersController from "../controllers/users_controller";
+import { authMiddleware } from "../controllers/auth_controller";
 
 /**
  * @swagger
@@ -18,12 +19,16 @@ import usersController from "../controllers/users_controller";
  *                  email:
  *                      type: string
  *                      description: The user email
+ *                  password:
+ *                      type: string
+ *                      description: The user password
  *                  username:
  *                      type: string
  *                      description: The user username
  *              example:
- *                  email: 'usernameexample'
- *                  username: '123456'
+ *                  email: 'bla@user.com'
+ *                  password: 'blabla'
+ *                  username: 'bla'
  * /users/:
  *      get:
  *          summary: get all users
@@ -111,12 +116,14 @@ import usersController from "../controllers/users_controller";
 
 router.get("/", usersController.getAll.bind(usersController));
 
-router.post("/", usersController.post.bind(usersController));
-
 router.get("/:id", usersController.getById.bind(usersController));
 
-router.delete("/:id", usersController.delete.bind(usersController));
+router.delete(
+  "/:id",
+  authMiddleware,
+  usersController.delete.bind(usersController)
+);
 
-router.put("/", usersController.update.bind(usersController));
+router.put("/", authMiddleware, usersController.update.bind(usersController));
 
 export default router;

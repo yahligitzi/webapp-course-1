@@ -16,13 +16,6 @@ const testUser: User = {
   password: "testpassword",
 };
 
-const secondTestUser: User = {
-  _id: "507f191e810c19729de860ea",
-  username: "yahli",
-  email: "yahlitest@user.com",
-  password: "yahlitestpassword",
-};
-
 beforeAll(async () => {
   console.log("beforeAll");
   app = await initApp();
@@ -51,22 +44,11 @@ describe("Users tests", () => {
     expect(response.body.length).toBe(1);
   });
 
-  test("Test create user", async () => {
-    const response = await request(app)
-      .post("/users")
-      .set({ authorization: "JWT " + testUser.token })
-      .send(secondTestUser);
-    expect(response.statusCode).toBe(201);
-    expect(response.body.username).toBe(secondTestUser.username);
-    expect(response.body.password).toBe(secondTestUser.password);
-    expect(response.body.email).toBe(secondTestUser.email);
-  });
-
   test("Test get user by id", async () => {
-    const response = await request(app).get("/users/" + secondTestUser._id);
+    const response = await request(app).get("/users/" + testUser._id);
     expect(response.statusCode).toBe(200);
-    expect(response.body.username).toBe(secondTestUser.username);
-    expect(response.body.email).toBe(secondTestUser.email);
+    expect(response.body.username).toBe(testUser.username);
+    expect(response.body.email).toBe(testUser.email);
   });
 
   test("Test update user", async () => {
@@ -74,23 +56,23 @@ describe("Users tests", () => {
       .put("/users/")
       .set({ authorization: "JWT " + testUser.token })
       .send({
-        _id: secondTestUser._id,
-        username: secondTestUser.username + "changed",
+        _id: testUser._id,
+        username: testUser.username + "changed",
       });
 
     expect(response.statusCode).toBe(201);
   });
 
   test("Test get user by id after change", async () => {
-    const response = await request(app).get("/users/" + secondTestUser._id);
+    const response = await request(app).get("/users/" + testUser._id);
     expect(response.statusCode).toBe(200);
-    expect(response.body.username).toBe(secondTestUser.username + "changed");
-    expect(response.body.email).toBe(secondTestUser.email);
+    expect(response.body.username).toBe(testUser.username + "changed");
+    expect(response.body.email).toBe(testUser.email);
   });
 
   test("Test delete user", async () => {
     const response = await request(app)
-      .delete("/users/" + secondTestUser._id)
+      .delete("/users/" + testUser._id)
       .set({ authorization: "JWT " + testUser.token });
     expect(response.statusCode).toBe(200);
   });

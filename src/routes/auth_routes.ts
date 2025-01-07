@@ -21,44 +21,24 @@ import authController from "../controllers/auth_controller";
 
 /**
  * @swagger
- * components:
- *   schemas:
- *     User:
- *       type: object
- *       required:
- *         - email
- *         - password
- *       properties:
- *         email:
- *           type: string
- *           description: The user email
- *         password:
- *           type: string
- *           description: The user password
- *       example:
- *         email: 'bob@gmail.com'
- *         password: '123456'
- */
-
-/**
- * @swagger
  * /auth/register:
  *   post:
- *     summary: registers a new user
+ *     summary: user register
+ *     description: Register and create a new user
  *     tags: [Auth]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/Users'
  *     responses:
  *       200:
  *         description: The new user
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/User'
+ *               $ref: '#/components/schemas/Users'
  */
 router.post("/register", authController.register);
 
@@ -66,7 +46,7 @@ router.post("/register", authController.register);
  * @swagger
  * /auth/login:
  *   post:
- *     summary: User login
+ *     summary: user login
  *     description: Authenticate user and return tokens
  *     tags:
  *       - Auth
@@ -75,7 +55,7 @@ router.post("/register", authController.register);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/Users'
  *     responses:
  *       200:
  *         description: Successful login
@@ -104,7 +84,7 @@ router.post("/login", authController.login);
  * @swagger
  * /auth/refresh:
  *   post:
- *     summary: Refresh tokens
+ *     summary: refresh tokens
  *     description: Refresh access and refresh tokens using the provided refresh token
  *     tags:
  *       - Auth
@@ -143,7 +123,7 @@ router.post("/refresh", authController.refresh);
  * @swagger
  * /auth/logout:
  *   post:
- *     summary: User logout
+ *     summary: user logout
  *     description: Logout user and invalidate the refresh token
  *     tags:
  *       - Auth
